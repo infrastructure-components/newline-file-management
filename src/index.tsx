@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "@babel/polyfill";
 
 import {
@@ -10,6 +10,16 @@ import {
 import FileStorage from './file-storage';
 import UploadForm from './upload-form';
 import FileList from './file-list';
+
+const FileManagement = (props) => {
+
+    const [refetch, setRefetch] = useState(undefined);
+
+    return <div>
+        <FileList setRefetch={setRefetch}/>
+        <UploadForm refetch={refetch}/>
+    </div>;
+}
 
 export default (
     <ServiceOrientedApp
@@ -23,10 +33,7 @@ export default (
         <Route
             path="/"
             name="Newline File-Management"
-            render={(props) => <div>
-                <FileList/>
-                <UploadForm/>
-            </div>}
+            render={(props) => <FileManagement/>}
         />
 
 

@@ -40,6 +40,7 @@ const UploadForm = (props) => {
         console.log(event.target.files[0]);
         upload(event.target.files[0], (uri) => {
             console.log("file uploaded: ", uri);
+            props.refetch();
         });
     };
 
